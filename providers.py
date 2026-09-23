@@ -133,7 +133,7 @@ class GeminiProvider(BaseProvider):
     label = "Google Gemini"
     key_env = "GEMINI_API_KEY"
     model_env = "GEMINI_MODEL"
-    default_model = "gemini-2.5-flash-lite"
+    default_model = "gemini-3.5-flash-lite"
     enable_env = "ENABLE_GEMINI"
 
     def generate(self, prompt: str) -> str:
@@ -204,7 +204,7 @@ class GroqProvider(OpenAICompatibleProvider):
     label = "Groq"
     key_env = "GROQ_API_KEY"
     model_env = "GROQ_MODEL"
-    default_model = "llama-3.1-8b-instant"
+    default_model = "lopenai/gpt-oss-20b"
     enable_env = "ENABLE_GROQ"
     api_url = "https://api.groq.com/openai/v1/chat/completions"
 
