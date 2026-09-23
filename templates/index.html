@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="무료 API 3개로 독립 분석하고 한 번 더 종합하는 로컬 AI 검토 도구">
+  <title>AI Review Lab · Free API Edition</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand"><span class="mark">AR</span><span>AI Review Lab</span></div>
+      <p class="kicker">FREE API EDITION</p>
+      <h1>세 관점으로 분석하고,<br><em>한 번 더 신중하게 종합합니다.</em></h1>
+      <p class="lead">Gemini · Groq · OpenRouter가 서로의 답을 보지 않고 분석한 뒤, 지정한 공급자가 최종 답을 만듭니다.</p>
+    </header>
+
+    <section class="notice" role="note">
+      <strong>외부 전송 안내</strong>
+      <span>입력한 질문은 선택한 AI 공급자 서버로 전송됩니다. 개인정보, 회사 기밀, 인증정보는 입력하지 마세요. API 키는 이 컴퓨터의 서버에만 보관되며 브라우저로 전달되지 않습니다.</span>
+    </section>
+
+    <section class="panel status-panel" aria-labelledby="provider-title">
+      <div class="section-head">
+        <div><p class="eyebrow">CONNECTIONS</p><h2 id="provider-title">공급자 연결 상태</h2></div>
+        <div class="call-count"><span>예상 호출</span><strong id="expected-calls">—</strong></div>
+      </div>
+      <div id="providers" class="provider-grid" aria-live="polite"></div>
+      <p class="flow" id="workflow">독립 분석 3회 + 최종 종합 1회</p>
+    </section>
+
+    <section class="panel ask-panel">
+      <label for="question">검토할 질문 또는 문제</label>
+      <textarea id="question" maxlength="12000" placeholder="예: 이 기술 제안의 위험과 더 나은 실행 순서를 검토해 주세요."></textarea>
+      <div class="actions">
+        <span id="char-count">0 / 12,000자</span>
+        <button id="run" type="button">4단계 검토 시작</button>
+      </div>
+      <div id="progress" class="progress" hidden><span></span><p>세 공급자가 독립적으로 분석 중입니다…</p></div>
+      <div id="global-error" class="error-box" hidden></div>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <article class="panel final-card">
+        <p class="eyebrow">FINAL SYNTHESIS</p>
+        <h2>최종 종합</h2>
+        <div id="final-answer" class="answer"></div>
+      </article>
+      <div id="analysis-grid" class="analysis-grid"></div>
+    </section>
+  </main>
+  <footer>로컬 전용 · 127.0.0.1 바인딩 · 무료 한도와 모델 제공 여부는 공급자 정책에 따라 달라질 수 있습니다.</footer>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
