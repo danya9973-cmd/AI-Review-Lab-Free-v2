@@ -4,3 +4,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 diagnostics-*.json
+build/
+dist/
+*.spec
+.pyinstaller/

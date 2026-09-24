@@ -1,5 +1,13 @@
 # 변경사항 요약
 
+## macOS Personal App
+
+- 현재 Flask UI를 독립 macOS 창으로 여는 `desktop.py`를 추가했습니다.
+- 터미널 없이 실행 가능한 `AIReviewLab.app` 빌드 스크립트를 추가했습니다.
+- 실제 API 키는 앱에 포함하지 않고 사용자 Application Support 폴더에 보관합니다.
+- 앱은 충돌을 피하도록 사용 가능한 임의의 로컬 포트에만 바인딩됩니다.
+- Gemini와 Groq 기본 모델을 현재 지원 모델로 갱신했습니다.
+
 ## Free API Edition
 
 - Claude SDK 및 OpenAI SDK 의존성을 제거했습니다.

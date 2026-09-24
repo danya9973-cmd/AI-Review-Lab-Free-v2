@@ -36,10 +36,34 @@ python app.py
 
 브라우저에서 <http://127.0.0.1:5000>을 여세요. 외부 기기에서 접속되지 않도록 앱은 `127.0.0.1`에만 바인딩됩니다.
 
+## 개인용 macOS 앱 만들기
+
+현재 `.env`에 세 API 키가 설정되고 연결 테스트가 통과한 상태에서 다음 파일을 실행합니다.
+
+```bash
+./build-macos-app.command
+```
+
+완성된 앱은 다음 위치에 생성됩니다.
+
+```text
+dist/AIReviewLab.app
+```
+
+Finder에서 앱을 더블클릭하면 터미널이나 별도 브라우저 없이 독립 창으로 실행됩니다. 처음 실행을 macOS가 막으면 앱을 우클릭하고 **열기**를 선택하세요.
+
+API 키는 앱 패키지에 포함되지 않습니다. 빌드 스크립트가 현재 `.env`를 다음 개인 설정 위치로 복사하고 소유자만 읽을 수 있도록 권한을 제한합니다.
+
+```text
+~/Library/Application Support/AI Review Lab/.env
+```
+
+앱에서 사용할 키나 모델을 바꾸려면 `open-app-settings.command`를 실행해 이 파일을 수정한 뒤 앱을 완전히 종료하고 다시 여세요. `dist/`와 빌드 파일은 Git에서 제외됩니다.
+
 ## 기본 모델
 
-- Gemini: `gemini-2.5-flash-lite`
-- Groq: `llama-3.1-8b-instant`
+- Gemini: `gemini-3.5-flash-lite`
+- Groq: `openai/gpt-oss-20b`
 - OpenRouter: `openrouter/free`
 
 모델명은 모두 `.env`에서 바꿀 수 있습니다. Groq 기본값은 공식 지원 모델 목록에 있는 빠른 프로덕션 모델을 선택했습니다. OpenRouter의 `openrouter/free`는 요청 조건에 맞는 무료 모델로 라우팅합니다. 공급자 정책이 바뀌면 각 공식 모델 목록을 확인하고 환경변수만 수정하세요.
